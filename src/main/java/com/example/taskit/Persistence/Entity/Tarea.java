@@ -21,11 +21,8 @@ public class Tarea {
     private long id;
     private String titulo;
     private String descripcion;
-    //@Convert(converter = LocalDateAttributeConverter.class)
     private LocalDate fecha_limite;
-    //@Convert(converter = LocalDateAttributeConverter.class)
     private LocalDate fecha_creacion;
-    //@Convert(converter = LocalDateAttributeConverter.class)
     private LocalDate fecha_finalizacion;
     private Estado estado;
 }
