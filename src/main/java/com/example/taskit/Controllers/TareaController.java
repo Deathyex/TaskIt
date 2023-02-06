@@ -28,9 +28,19 @@ public class TareaController {
         return this.tareaService.findAll();
     }
 
+    @GetMapping("/listar/pendientes")
+    public List<Tarea> findAllPendientes(){
+        return this.tareaService.findAllPendientes();
+    }
+
+    @GetMapping("/listar/finalizadas")
+    public List<Tarea> findAllFinalizadas(){
+        return this.tareaService.findAllFinalizadas();
+    }
+
     @GetMapping("/listar/busqueda")
     public List<Tarea> filtrar(@RequestParam LocalDate fechaInicio, @RequestParam LocalDate fechaFin, @RequestParam String texto){
-        return this.tareaService.filtrarPorFechasTitulo(fechaInicio, fechaFin, texto);
+        return this.tareaService.filtrar(fechaInicio, fechaFin, texto);
     }
 
     @GetMapping("/listar/estado/{estado}")
