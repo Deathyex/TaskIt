@@ -13,8 +13,8 @@ formCrear.addEventListener('submit', function (event) {
         },
         body: JSON.stringify({
             titulo: titulo,
-            fecha_limite: fecha,
-            descripcion: descripcion
+            descripcion: descripcion,
+            fecha_limite: fecha
         })
     })
         .then(response => response.json())
