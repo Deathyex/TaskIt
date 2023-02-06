@@ -1,3 +1,38 @@
 body{
     background-color: rgb(115, 115, 252);
 }
+
+input[type="date"]{
+    background-color: rgb(145, 145, 207);
+    padding: 5px;
+    font-family: "Roboto Mono", monospace;
+    color: aliceblue;
+    top:50%;
+    left: 50%;
+    border:none;
+    border-radius: 2px;
+    font-size: 18px;
+    outline: none;
+    
+}
+
+::-webkit-calendar-picker-indicator{
+    background-color: aliceblue;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.modal-header{
+    background-color: rgb(137, 156, 253);
+}
+
+.modal-body{
+    background-color: rgb(247, 247, 250);
+}
+
+.close{
+    border:none;
+    border-radius: 2px;
+    
+}
