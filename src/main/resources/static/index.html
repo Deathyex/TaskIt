@@ -13,7 +13,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
   
-
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -27,28 +26,25 @@
                 </ul>
                 </li>
             </ul>
-            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal" style="margin-right: 20px;">
-                Nueva tarea
-            </button>
-            
+            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal" style="margin-right: 20px;">Nueva tarea</button>  
         </div>
     </nav>
     </br>
     <div class="container">
-        <div class="container-fluid" style="background-color:#d0dce7; height: 80px;">   
+        <div class="container-fluid" style="background-color:#d0dce7; height: 80px; border-radius: 5px;">   
                 <ul class="nav justify-content-left">
                     <li class="nav-item" style="margin:20px">
-                        <button class="btn btn-outline-primary" type="submit">Limpiar filtros</button>
+                        <button class="btn btn-outline-primary" type="reset">Limpiar filtros</button>
                     </li>
                     <li class="nav-item" style="margin:20px">
                         <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
                     </li>
                     <li class="nav-item" style="margin:20px">
-                        <label for="fecha">Fecha desde:</label>
+                        <label for="fecha">Desde:</label>
                         <input type="date" id="fecha" name="fecha">
                     </li>
                     <li class="nav-item" style="margin:20px">
-                        <label for="fecha">Fecha hasta:</label>
+                        <label for="fecha">Hasta:</label>
                         <input type="date" id="fecha" name="fecha">
                     </li>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin:20px">
@@ -59,7 +55,7 @@
     </div>
     </br> 
     <div class="container">
-        <table class="table table-hover" style="background-color:#d0dce7;">
+        <table class="table table-hover" style="background-color:#d0dce7; border-radius: 5px;">
             <thead>
             <tr>
                 <th scope="col">Título</th>
@@ -75,11 +71,9 @@
                     <td>---</td>
                     <td>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="right: 70px;">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="padding: 8px 10px;">
                             <label class="form-check-label" for="flexCheckDefault">Finalizar</label>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
-                                ...
-                            </button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2" style="padding: 0.5px 16px;">...</button>
                         </div>
                         
                     </td>
@@ -116,7 +110,7 @@
                                 <label for="fecha">Fecha límite:</label>
                                 <input type="date" id="fecha" name="fecha" class="form-control">
                             </div></br>
-                            <button type="submit" class="btn btn-success">Crear tarea</button>
+                            <button type="submit" class="btn btn-outline-success">Crear tarea</button>
                         </div>
                     </form>
                 </div>
@@ -153,14 +147,6 @@
         </div>
     </div>
 
-
-    <form id="finalizar-form">
-        <div>
-            <label for="id_finalizar">Id:</label>
-            <input type="text" id="id_finalizar" name="id">
-        </div>
-        <button type="submit">Finalizar tarea</button>
-    </form>
 
     <script src="JS/indexController.js"></script>
 </body>
