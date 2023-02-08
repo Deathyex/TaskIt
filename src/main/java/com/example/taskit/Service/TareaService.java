@@ -46,13 +46,13 @@ public class TareaService {
     }
 
     public List<Tarea> filtrar(LocalDate fechaInicio, LocalDate fechaFin, String texto){
-        if(texto.isEmpty() && !fechaInicio.equals("") && !fechaFin.equals("")){
+        if(texto.isEmpty() && !(fechaInicio==null) && !(fechaFin==null)){
             return this.repository.findAllByFechaLimiteBetween(fechaInicio, fechaFin);
         }
-        else if(!texto.isEmpty() && fechaInicio.equals("") && fechaFin.equals("")){
+        else if(!texto.isEmpty() && (fechaInicio==null) && (fechaFin==null)){
             return this.repository.findAllByTituloLikeIgnoreCaseOrDescripcionLikeIgnoreCase(texto, texto);
         }
-        else if(!texto.isEmpty() && !fechaInicio.equals("") && !fechaFin.equals("")) {
+        else if(!texto.isEmpty() && !(fechaInicio==null) && !(fechaFin==null)) {
             return this.repository.findAllByFechaLimiteBetweenAndTituloLikeIgnoreCase(fechaInicio, fechaFin, texto);
         } else {
             return this.findAllByEstadoIs(Tarea.Estado.PENDIENTE);

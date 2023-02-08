@@ -128,7 +128,7 @@ async function filtrarTareas(){
     let desde = document.getElementById("fecha_desde").value;
     let hasta = document.getElementById("fecha_hasta").value;
     let texto = document.getElementById("textoBusqueda").value;
-    fetch(`/listar/filtrar?fechaInicio=${desde}&fechaFin=${hasta}&texto=${texto}`).then(res => res.json()).then(tareas => {
+    fetch(`/tareas/listar/filtrar?fechaInicio=${desde}&fechaFin=${hasta}&texto=${texto}`).then(res => res.json()).then(tareas => {
         let listadoHtml = '';
         tareas.forEach(tarea => {
             let botonEliminar = `<button type="button" onclick="borrarTarea(${tarea.id})" class="btn btn-danger" >Borrar</button>`;
