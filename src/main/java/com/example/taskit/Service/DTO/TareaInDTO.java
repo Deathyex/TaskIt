@@ -10,5 +10,5 @@ import java.time.LocalDate;
 public class TareaInDTO {
     private String titulo;
     private String descripcion;
-    private LocalDate fecha_limite;
+    private LocalDate fechaLimite;
 }

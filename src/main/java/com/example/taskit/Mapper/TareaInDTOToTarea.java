@@ -13,8 +13,8 @@ public class TareaInDTOToTarea implements IMapper<TareaInDTO, Tarea>{
         Tarea tarea = new Tarea();
         tarea.setTitulo(in.getTitulo());
         tarea.setDescripcion(in.getDescripcion());
-        tarea.setFecha_limite(in.getFecha_limite());
-        tarea.setFecha_creacion(LocalDate.now());
+        tarea.setFechaLimite(in.getFechaLimite());
+        tarea.setFechaCreacion(LocalDate.now());
         tarea.setEstado(Tarea.Estado.PENDIENTE);
         return tarea;
     }

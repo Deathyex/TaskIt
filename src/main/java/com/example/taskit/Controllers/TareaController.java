@@ -23,6 +23,11 @@ public class TareaController {
         return this.tareaService.crearTarea(tareaInDTO);
     }
 
+    @GetMapping("/listar/{id}")
+    public Tarea findTarea(@PathVariable("id") Long id){
+        return this.tareaService.findTarea(id);
+    }
+
     @GetMapping("/listar")
     public List<Tarea> findAll(){
         return this.tareaService.findAll();
@@ -38,7 +43,7 @@ public class TareaController {
         return this.tareaService.findAllFinalizadas();
     }
 
-    @GetMapping("/listar/busqueda")
+    @GetMapping("/listar/filtrar")
     public List<Tarea> filtrar(@RequestParam LocalDate fechaInicio, @RequestParam LocalDate fechaFin, @RequestParam String texto){
         return this.tareaService.filtrar(fechaInicio, fechaFin, texto);
     }

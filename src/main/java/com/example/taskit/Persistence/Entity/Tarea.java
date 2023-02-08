@@ -21,8 +21,8 @@ public class Tarea {
     private long id;
     private String titulo;
     private String descripcion;
-    private LocalDate fecha_limite;
-    private LocalDate fecha_creacion;
-    private LocalDate fecha_finalizacion;
+    private LocalDate fechaLimite;
+    private LocalDate fechaCreacion;
+    private LocalDate fechaFinalizacion;
     private Estado estado;
 }

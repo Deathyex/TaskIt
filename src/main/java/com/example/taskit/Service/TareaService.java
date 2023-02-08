@@ -25,6 +25,10 @@ public class TareaService {
         return this.repository.save(tarea);
     }
 
+    public Tarea findTarea(Long id){
+        return this.repository.getReferenceById(id);
+    }
+
     public List<Tarea>  findAll(){
         return this.repository.findAll();
     }
@@ -43,20 +47,20 @@ public class TareaService {
 
     public List<Tarea> filtrar(LocalDate fechaInicio, LocalDate fechaFin, String texto){
         if(texto.isEmpty() && !fechaInicio.equals("") && !fechaFin.equals("")){
-            return this.repository.findAllByFecha_limiteBetween(fechaInicio, fechaFin);
+            return this.repository.findAllByFechaLimiteBetween(fechaInicio, fechaFin);
         }
         else if(!texto.isEmpty() && fechaInicio.equals("") && fechaFin.equals("")){
-            return this.repository.findAllByTituloLikeIgnoreCaseOrDescripcionLikeIgnoreCase(texto);
+            return this.repository.findAllByTituloLikeIgnoreCaseOrDescripcionLikeIgnoreCase(texto, texto);
         }
         else if(!texto.isEmpty() && !fechaInicio.equals("") && !fechaFin.equals("")) {
-            return this.repository.findAllByFecha_limiteBetweenAndTituloLikeIgnoreCase(fechaInicio, fechaFin, texto);
+            return this.repository.findAllByFechaLimiteBetweenAndTituloLikeIgnoreCase(fechaInicio, fechaFin, texto);
         } else {
             return this.findAllByEstadoIs(Tarea.Estado.PENDIENTE);
         }
     }
 
     public List<Tarea> filtrarPorTituloDescripcion(String texto){
-        return this.repository.findAllByTituloLikeIgnoreCaseOrDescripcionLikeIgnoreCase(texto);
+        return this.repository.findAllByTituloLikeIgnoreCaseOrDescripcionLikeIgnoreCase(texto, texto);
     }
 
     @Transactional

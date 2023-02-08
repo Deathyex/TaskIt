@@ -21,12 +21,12 @@
                         Mis Tareas
                     </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Tareas Completadas</a></li>
-                    <li><a class="dropdown-item" href="#">Tareas Pendientes</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="cargarPendientes()">Tareas Pendientes</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="cargarFinalizadas()">Tareas Finalizadas</a></li>
                 </ul>
                 </li>
             </ul>
-            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal" style="margin-right: 20px;">Nueva tarea</button>  
+            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#modalNuevaTarea" style="margin-right: 20px;">Nueva tarea</button>  
         </div>
     </nav>
     </br>
@@ -37,60 +37,48 @@
                         <button class="btn btn-outline-primary" type="reset">Limpiar filtros</button>
                     </li>
                     <li class="nav-item" style="margin:20px">
-                        <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
+                        <input id="textoBusqueda" class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
                     </li>
                     <li class="nav-item" style="margin:20px">
-                        <label for="fecha">Desde:</label>
-                        <input type="date" id="fecha" name="fecha">
+                        <label for="fecha_desde">Desde:</label>
+                        <input type="date" id="fecha_desde" name="fecha">
                     </li>
                     <li class="nav-item" style="margin:20px">
-                        <label for="fecha">Hasta:</label>
-                        <input type="date" id="fecha" name="fecha">
+                        <label for="fecha_hasta">Hasta:</label>
+                        <input type="date" id="fecha_hasta" name="fecha">
                     </li>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin:20px">
-                        <button class="btn btn-outline-primary" type="button">Filtrar</button>
+                        <button onclick="filtrarTareas()" class="btn btn-outline-primary" type="button">Filtrar</button>
                     </div>
                 </ul>   
         </div>
     </div>
-    </br> 
-    <div class="container">
-        <table class="table table-hover" style="background-color:#d0dce7; border-radius: 5px;">
+    </br>
+    <div class="container" style="background-color:#d0dce7; border-radius: 5px;">
+        <table class="table table-hover" >
             <thead>
             <tr>
                 <th scope="col">Título</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Fecha límite</th>
-                <th scope="col">Acciones</th>
             </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>---</td>
-                    <td>---</td>
-                    <td>---</td>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="padding: 8px 10px;">
-                            <label class="form-check-label" for="flexCheckDefault">Finalizar</label>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2" style="padding: 0.5px 16px;">...</button>
-                        </div>
-                        
-                    </td>
-                </tr>
+            <tbody class="table-group-divider" id="tareasListado">
+
             </tbody>
         </table>
     </div>
 
+
     <!-- Modal nueva tarea-->
-    <div class="modal" id="myModal">
+    <div class="modal" id="modalNuevaTarea">
         <div class="modal-dialog">
         <div class="modal-content">
     
             <!-- Modal Header -->
             <div class="modal-header">
-            <h4 class="modal-title">Nueva tarea</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Nueva tarea</h4>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
     
             <!-- Modal body -->
@@ -98,17 +86,17 @@
                 <div class="container">
                     <form id="tarea-form">
                         <div class="form-group">
-                            <div class="form-control">
+                            <div class="mb-3">
                                 <label for="titulo">Titulo:</label>
                                 <input type="text" id="titulo" name="titulo" class="form-control">
                             </div>
-                            <div class="form-control">
+                            <div class="mb-3">
                                 <label for="descripcion">Descripción:</label>
                                 <input type="text" id="descripcion" name="descripcion" class="form-control">
                             </div>
-                            <div class="form-control">
-                                <label for="fecha">Fecha límite:</label>
-                                <input type="date" id="fecha" name="fecha" class="form-control">
+                            <div class="mb-3">
+                                <label for="fechaLimite">Fecha límite:</label>
+                                <input type="date" id="fechaLimite" name="fecha" class="form-control">
                             </div></br>
                             <button type="submit" class="btn btn-outline-success">Crear tarea</button>
                         </div>
@@ -119,29 +107,24 @@
         </div>
     </div>
 
-    <!-- Modal 2-->
-    <div class="modal" id="myModal2">
+    <!-- Modal detalles-->
+    <div class="modal" id="modalDetalles">
         <div class="modal-dialog">
         <div class="modal-content">
     
             <!-- Modal Header -->
             <div class="modal-header">
-            <h4 class="modal-title">Titulo</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="detallesTitulo">Titulo</h4>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
     
             <!-- Modal body -->
             <div class="modal-body">
-                <label >Descripción</label></br>
-                <label >Fecha límite</label></br>
-                <label >Fecha creación</label></br>
-                <label >Fecha finalización</label></br>
-                <label >Estado</label>
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Borrar</button>
+                <label id="detallesDescripcion">Descripción</label></br>
+                <label id="detallesFechaLimite">Fecha límite</label></br>
+                <label id="detallesFechaCreacion">Fecha creación</label></br>
+                <label id="detallesFechaFinalizacion">Fecha finalización</label></br>
+                <label id="detallesEstado">Estado</label>
             </div>
         </div>
         </div>
