@@ -104,6 +104,11 @@ async function cargarPendientes(){
 
             listadoHtml += tareaHtml;
         });
+        document.getElementById("tareasListadoHeader").innerHTML = '<tr>\n' +
+            '                <th scope="col">Título</th>\n' +
+            '                <th scope="col">Descripción</th>\n' +
+            '                <th scope="col">Fecha límite</th>\n' +
+            '            </tr>';
         document.getElementById("tareasListado").innerHTML = listadoHtml;
     });
 }
@@ -114,12 +119,16 @@ async function cargarFinalizadas(){
         tareas.forEach(tarea => {
             let botonDetalles = `<button type="button" onclick="consultarDetalles(${tarea.id})" class="btn btn-primary" data-toggle="modal" data-target="#modalDetalles">Detalles</button>`;
 
-            let fechaLimite = tarea.fechaLimite;
-
-            let tareaHtml = `<tr><td>${tarea.titulo}</td><td>${tarea.descripcion}</td><td>${fechaLimite}</td><td class="tablaAcciones">${botonDetalles}</td></tr>`;
+            let tareaHtml = `<tr><td>${tarea.titulo}</td><td>${tarea.descripcion}</td><td>${tarea.fechaLimite}</td><td>${tarea.fechaFinalizacion}</td><td class="tablaAcciones">${botonDetalles}</td></tr>`;
 
             listadoHtml += tareaHtml;
         });
+        document.getElementById("tareasListadoHeader").innerHTML = '<tr>\n' +
+            '                <th scope="col">Título</th>\n' +
+            '                <th scope="col">Descripción</th>\n' +
+            '                <th scope="col">Fecha límite</th>\n' +
+            '                <th scope="col">Fecha finalización</th>\n' +
+            '            </tr>';
         document.getElementById("tareasListado").innerHTML = listadoHtml;
     });
 }
