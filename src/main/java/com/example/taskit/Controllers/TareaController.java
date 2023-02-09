@@ -44,8 +44,8 @@ public class TareaController {
     }
 
     @GetMapping("/listar/filtrar")
-    public List<Tarea> filtrar(@RequestParam LocalDate fechaInicio, @RequestParam LocalDate fechaFin, @RequestParam String texto){
-        return this.tareaService.filtrar(fechaInicio, fechaFin, texto);
+    public List<Tarea> filtrar(@RequestParam LocalDate fechaInicio, @RequestParam LocalDate fechaFin){
+        return this.tareaService.filtrar(fechaInicio, fechaFin);
     }
 
     @GetMapping("/listar/estado/{estado}")

@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface TareaRepository extends JpaRepository<Tarea, Long> {
     List<Tarea> findAllByEstadoIs(Tarea.Estado estado);
-    List<Tarea> findAllByFechaLimiteBetween(LocalDate fechaInicio, LocalDate fechaFin);
+    List<Tarea> findAllByFechaLimiteBetweenAndEstadoIs(LocalDate fechaInicio, LocalDate fechaFin, Tarea.Estado estado);
     List<Tarea> findAllByFechaLimiteBetweenAndTituloLikeIgnoreCase(LocalDate fechaInicio, LocalDate fechaFin, String titulo);
     List<Tarea> findAllByTituloLikeIgnoreCaseOrDescripcionLikeIgnoreCase(String texto1, String texto2);
 

@@ -45,7 +45,7 @@ public class TareaService {
         return this.findAllByEstadoIs(Tarea.Estado.FINALIZADA);
     }
 
-    public List<Tarea> filtrar(LocalDate fechaInicio, LocalDate fechaFin, String texto){
+    /*public List<Tarea> filtrar(LocalDate fechaInicio, LocalDate fechaFin, String texto){
         if(texto.isEmpty() && !(fechaInicio==null) && !(fechaFin==null)){
             return this.repository.findAllByFechaLimiteBetween(fechaInicio, fechaFin);
         }
@@ -57,6 +57,10 @@ public class TareaService {
         } else {
             return this.findAllByEstadoIs(Tarea.Estado.PENDIENTE);
         }
+    }*/
+
+    public List<Tarea> filtrar(LocalDate fechaInicio, LocalDate fechaFin){
+        return this.repository.findAllByFechaLimiteBetweenAndEstadoIs(fechaInicio, fechaFin, Tarea.Estado.PENDIENTE);
     }
 
     public List<Tarea> filtrarPorTituloDescripcion(String texto){
