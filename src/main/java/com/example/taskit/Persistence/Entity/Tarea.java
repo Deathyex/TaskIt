@@ -25,4 +25,6 @@ public class Tarea {
     private LocalDate fechaCreacion;
     private LocalDate fechaFinalizacion;
     private Estado estado;
+    @ManyToOne
+    private Proyecto proyecto;
 }
