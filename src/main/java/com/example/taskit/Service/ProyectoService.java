@@ -8,7 +8,9 @@ import com.example.taskit.Persistence.Repository.ProyectoRepository;
 import com.example.taskit.Persistence.Repository.TareaRepository;
 import com.example.taskit.Service.DTO.ProyectoInDTO;
 import com.example.taskit.Service.DTO.TareaInDTO;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProyectoService {
     private final ProyectoRepository proyectoRepository;
     private final TareaRepository tareaRepository;
@@ -27,10 +29,10 @@ public class ProyectoService {
         return this.proyectoRepository.save(proyecto);
     }
 
-    public Proyecto agregarTarea(Long id_proyecto, TareaInDTO tareaInDTO){
-        Tarea tarea = tareaMapper.map(tareaInDTO);
+    public Tarea agregarTarea(Long id_proyecto, TareaInDTO tareaInDTO){
         Proyecto proyecto = proyectoRepository.getReferenceById(id_proyecto);
-        proyecto.getLista_tareas().add(tarea);
-        return proyecto;
+        Tarea tarea = tareaMapper.map(tareaInDTO);
+        tarea.setProyecto(proyecto);
+        return this.tareaRepository.save(tarea);
     }
 }
