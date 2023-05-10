@@ -22,7 +22,7 @@ public class ProyectoController {
     }
 
     @PostMapping("/agregar_tarea")
-    public Tarea agregarTarea(@PathVariable Long id_proyecto, @RequestBody TareaInDTO tareaInDTO){
-        return this.proyectoService.agregarTarea(id_proyecto, tareaInDTO);
+    public Tarea agregarTarea(@RequestBody TareaInDTO tareaInDTO){
+        return this.proyectoService.agregarTarea(1L, tareaInDTO);
     }
 }
